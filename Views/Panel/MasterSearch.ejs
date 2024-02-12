@@ -1,0 +1,1122 @@
+<%- include('../partials/head.ejs') %>
+    <style>
+        td.sorting_1 {
+            text-align: center;
+        }
+
+        /* th.gridcss.sorting.sorting_asc {
+            width: 0% !important;
+        } */
+
+        th.gridcss.sorting {
+            width: fit-content !important;
+        }
+
+        .el-tablo .value {
+            font-size: 1rem !important;
+        }
+
+        .gridcss {
+            font-size: 13px !important;
+        }
+
+        th {
+            text-align: center !important;
+            vertical-align: middle !important;
+            font-weight: 100 !important;
+        }
+
+        .el-tablo.padded {
+            padding: 0.5rem !important;
+        }
+
+        /* .content-box {
+            padding-left: 1rem !important;
+        } */
+
+        @media (max-width: 1650px) {
+            body.with-content-panel .content-box {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+
+            .content-box {
+                padding: 1rem !important;
+            }
+        }
+
+        .element-box {
+            border: 1px solid #047bf8;
+            background: #ffffff;
+        }
+
+        a.el-tablo {
+            color: #047bf8;
+        }
+
+        .element-box,
+        .invoice-w,
+        .big-error-w {
+            padding: 1rem 2rem;
+            margin-bottom: 0rem;
+        }
+
+        .element-wrapper {
+            padding-bottom: -1rem !important;
+            padding-left: 1rem !important;
+
+        }
+
+        .bottomset {
+            padding-bottom: 3rem !important;
+        }
+
+        .element-wrapper .element-header {
+            margin-bottom: 0.5rem !important;
+        }
+
+        table.dataTable tbody th,
+        table.dataTable tbody td {
+            padding: 2px 5px;
+        }
+
+        /* .element-wrapper {
+            padding-bottom: 0rem;
+        } */
+    </style>
+    <%- include('../partials/header.ejs') %>
+        <!-------------------- 1st Section All box------------------->
+        <div class="content-i">
+            <div class="content-box">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="element-wrapper" style="padding-bottom: 1rem;">
+                            <div class="table-with-chart">
+                                <div class="row">
+                                    <div class="col-sm-2 col-12" id="divmaster">
+                                        <h6 class="element-header">Search Detail</h6>
+                                    </div>
+                                    <div class="col-sm-1 col-12" id="divmaster">
+                                        <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                            href="javascript:void(0)" onclick="divhideShowform(this)">
+                                            <div class="value"><span>Master</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-12" id="divBooth">
+                                        <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                            href="javascript:void(0)" onclick="divhideShowBooth(this)">
+                                            <div class="value">Booth Number</div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-1 col-12" id="divAddress">
+                                        <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                            href="javascript:void(0)" onclick="divhideShowAddress(this)">
+                                            <div class="value">Address</div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-12" id="divPollingStation">
+                                        <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                            href="javascript:void(0)" onclick="divhideShowPollingStation(this)">
+                                            <div class="value">Polling Station</div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-1 col-12" id="divSurname">
+                                        <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                            href="javascript:void(0)" onclick="divhideShowSurname(this)">
+                                            <div class="value">Surname</div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-1 col-12" id="divAge">
+                                        <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                            href="javascript:void(0)" onclick="divhideShowAge(this)">
+                                            <div class="value">Age</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------- 2nd Section  Select Detail------------------->
+        <div class="content-i">
+            <div class="content-box">
+                <div class="row" style="margin-bottom: -60px;">
+                    <div class="col-lg-12">
+                        <div class="element-wrapper bottomset" id="divformdetail" style="display: block;">
+                            <form class="form" id="filterfrm">
+                                <!-- <div class="element-box" style="background-color: white;">
+                                </div> -->
+                                <div class="element-box" style="padding: 0rem 1rem;margin-bottom: 0rem;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="">First Name</label>
+                                                <div class="">
+                                                    <input name="FirstNameEnglish" type="text" maxlength="" onchange=""
+                                                        id="FirstNameEnglish" class="form-control AllowAlphabetSpaceKey"
+                                                        placeholder="Enter First Name" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="">Middle Name</label>
+                                                <div class="">
+                                                    <input name="MiddleNameEnglish" type="text" maxlength="" onchange=""
+                                                        id="MiddleNameEnglish"
+                                                        class="form-control AllowAlphabetSpaceKey"
+                                                        placeholder="Enter Middle Name" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="">Last Name</label>
+                                                <div class="">
+                                                    <input name="LastNameEnglish" type="text" maxlength="" onchange=""
+                                                        id="LastNameEnglish" class="form-control AllowAlphabetSpaceKey"
+                                                        placeholder="Enter Last Name" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="">Mobile No</label>
+                                                <div class="">
+                                                    <input name="MobileNo" type="text" maxlength="10" onchange=""
+                                                        id="MobileNo" class="form-control AllowNumberKey"
+                                                        placeholder="Enter Mobile No" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="">Age</label>
+                                                <div class="">
+                                                    <input name="FromAge" type="text" maxlength="3" onchange=""
+                                                        id="StartAge" class="form-control AllowNumberKey"
+                                                        placeholder="Enter Age" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="">
+                                                    <button type="reset" id="cancleButton"
+                                                        class="btn btn-primary btn-xs m-b-5"
+                                                        style="margin-top: 35px; float: right;" onclick=""><i
+                                                            class="fa fa-close"></i>&nbsp;
+                                                        cancle</button>
+                                                    <button type="button" class="btn btn-primary btn-xs m-b-5"
+                                                        id="btnSubmit"
+                                                        style="margin-top: 35px;margin-right: 15px; float: right;"
+                                                        onclick="SearchDetail(this)"><i
+                                                            class="fa fa-check-circle"></i>&nbsp;
+                                                        Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------- 3rd Section ------------------->
+        <div class="content-i">
+            <div class="content-box">
+                <div class="row" style="margin-top: -18px; margin-bottom: -18px;">
+                    <div class="col-lg-12">
+                        <div class="element-wrapper" id="divDropdownBooth" style="display: none;">
+                            <div class="row">
+                                <!-- <div class="col-md-12">
+                                    <h6 class="element-header">Select Booth :</h6>
+                                </div> -->
+                                <!-- <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-xs m-b-5"
+                                        style="margin: 5px;float: right;" onclick="btnCancle(this)"><i
+                                            class="fa fa-angle-double-left"></i>&nbsp;
+                                        Back</button></button>
+                                </div> -->
+                            </div>
+                            <div class="element-box" style="background-color: white;">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-sm-2" for="">Booth Number</label>
+                                    <div class="col-sm-4">
+                                        <select name="BoothID" id="BoothID" class="form-control select2 select2dropdown"
+                                            onchange="BindBoothData(this)">
+                                            <option value="">--Select Booth Number--</option>
+                                            <% if(BoothData !=null) {%>
+                                                <%for(var i=0; i < BoothData.length; i++){%>
+                                                    <option value="<%= BoothData[i].BoothID %>">
+                                                        <%= BoothData[i].BoothNo %>
+                                                    </option>
+                                                    <%}%>
+                                                        <%}%>
+                                        </select>
+                                    </div>
+                                    <!-- <div class="col-sm-4">
+                                                    <button type="Submit" class="btn btn-primary btn-xs m-b-5"
+                                                        style="margin: 5px;" onclick=""><i
+                                                            class="fa fa-check-circle"></i>&nbsp;
+                                                        Submit</button>
+                                                    <button type="Submit" class="btn btn-primary btn-xs m-b-5"
+                                                        style="margin: 5px;" onclick="CancelFunction()"><i
+                                                            class="fa fa-close"></i>&nbsp;
+                                                        cancle</button>
+                                                </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-wrapper" id="divDropdownAddress" style="display: none;">
+                            <div class="row">
+                                <!-- <div class="col-md-12">
+                                    <h6 class="element-header">Select Address :</h6>
+                                </div> -->
+                                <!-- <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-xs m-b-5"
+                                        style="margin: 5px;float: right;" onclick="btnCancle(this)"><i
+                                            class="fa fa-angle-double-left"></i>&nbsp;
+                                        Back</button></button>
+                                </div> -->
+                            </div>
+                            <div class="element-box" style="background-color: white;">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-sm-2" for="">Address</label>
+                                    <div class="col-sm-4">
+                                        <select name="Address" id="Address" class="form-control select2 select2dropdown"
+                                            onchange="BindBoothData(this)">
+                                            <option value="">--Select Address--</option>
+                                            <% if(AddressData !=null) {%>
+                                                <%for(var i=0; i < AddressData.length; i++){%>
+                                                    <option value="<%= AddressData[i].Address %>">
+                                                        <%= AddressData[i].Address %>
+                                                    </option>
+                                                    <%}%>
+                                                        <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-wrapper" id="divDropdownPollingStation" style="display: none;">
+                            <div class="row">
+                                <!-- <div class="col-md-12">
+                                    <h6 class="element-header">Select Polling Station :</h6>
+                                </div> -->
+                                <!-- <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-xs m-b-5"
+                                        style="margin: 5px;float: right;" onclick="btnCancle(this)"><i
+                                            class="fa fa-angle-double-left"></i>&nbsp;
+                                        Back</button></button>
+                                </div> -->
+                            </div>
+                            <div class="element-box" style="background-color: white;">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-sm-2" for="">PollingStation</label>
+                                    <div class="col-sm-4">
+                                        <select name="PollingStation" id="PollingStation"
+                                            class="form-control select2 select2dropdown" onchange="BindBoothData(this)">
+                                            <option Value="">--Select PollingStation--</option>
+                                            <% if(PollingStationData !=null) {%>
+                                                <%for(var i=0; i < PollingStationData.length; i++){%>
+                                                    <option value="<%= PollingStationData[i].PollingStation %>">
+                                                        <%= PollingStationData[i].PollingStation %>
+                                                    </option>
+                                                    <%}%>
+                                                        <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-wrapper" id="divDropdownSurname" style="display: none;">
+                            <div class="row">
+                                <!-- <div class="col-md-12">
+                                    <h6 class="element-header">Select Surname :</h6>
+                                </div> -->
+                                <!-- <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-xs m-b-5"
+                                        style="margin: 5px;float: right;" onclick="btnCancle(this)"><i
+                                            class="fa fa-angle-double-left"></i>&nbsp;
+                                        Back</button></button>
+                                </div> -->
+                            </div>
+                            <div class="element-box" style="background-color: white;">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-sm-2" for="">Surname</label>
+                                    <div class="col-sm-4">
+                                        <select name="Surname" id="Surname" class="form-control select2 select2dropdown"
+                                            onchange="BindBoothData(this)">
+                                            <option Value="">--Select Surname--</option>
+                                            <% if(SurnameData !=null) {%>
+                                                <%for(var i=0; i < SurnameData.length; i++){%>
+                                                    <option value="<%= SurnameData[i].Surname %>">
+                                                        <%= SurnameData[i].Surname %>
+                                                    </option>
+                                                    <%}%>
+                                                        <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-wrapper" id="divDropdownAge" style="display: none;">
+                            <div class="row">
+                                <!-- <div class="col-md-12">
+                                    <h6 class="element-header">Select Age :</h6>
+                                </div> -->
+                                <!-- <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-xs m-b-5"
+                                        style="margin: 5px;float: right;" onclick="btnCancle(this)"><i
+                                            class="fa fa-angle-double-left"></i>&nbsp;
+                                        Back</button></button>
+                                </div> -->
+                            </div>
+                            <div class="element-box" style="background-color: white;">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-sm-1" for="">From Age</label>
+                                    <div class="col-sm-2">
+                                        <select name="FromAge" id="FromAge" class="form-control select2 select2dropdown"
+                                            onchange="BindBoothData(this)">
+                                            <option Value="">--Select From Age--</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                            <option value="32">32</option>
+                                            <option value="33">33</option>
+                                            <option value="34">34</option>
+                                            <option value="35">35</option>
+                                            <option value="36">36</option>
+                                            <option value="37">37</option>
+                                            <option value="38">38</option>
+                                            <option value="39">39</option>
+                                            <option value="40">40</option>
+                                            <option value="41">41</option>
+                                            <option value="42">42</option>
+                                            <option value="43">43</option>
+                                            <option value="44">44</option>
+                                            <option value="45">45</option>
+                                            <option value="46">46</option>
+                                            <option value="47">47</option>
+                                            <option value="48">48</option>
+                                            <option value="49">49</option>
+                                            <option value="50">50</option>
+                                            <option value="51">51</option>
+                                            <option value="52">52</option>
+                                            <option value="53">53</option>
+                                            <option value="54">54</option>
+                                            <option value="55">55</option>
+                                            <option value="56">56</option>
+                                            <option value="57">57</option>
+                                            <option value="58">58</option>
+                                            <option value="59">59</option>
+                                            <option value="60">60</option>
+                                            <option value="61">61</option>
+                                            <option value="62">62</option>
+                                            <option value="63">63</option>
+                                        </select>
+                                        <!-- <input class="form-control" type="number" value=""
+                                                        onclick="BindBoothData(this)" name="FromAge" id="FromAge"> -->
+                                    </div>
+                                    <label class="col-form-label col-sm-1" for="">To Age</label>
+                                    <div class="col-sm-2">
+                                        <select name="ToAge" id="ToAge" class="form-control select2 select2dropdown"
+                                            onchange="BindBoothData(this)">
+                                            <option Value="">--Select To Age--</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                            <option value="32">32</option>
+                                            <option value="33">33</option>
+                                            <option value="34">34</option>
+                                            <option value="35">35</option>
+                                            <option value="36">36</option>
+                                            <option value="37">37</option>
+                                            <option value="38">38</option>
+                                            <option value="39">39</option>
+                                            <option value="40">40</option>
+                                            <option value="41">41</option>
+                                            <option value="42">42</option>
+                                            <option value="43">43</option>
+                                            <option value="44">44</option>
+                                            <option value="45">45</option>
+                                            <option value="46">46</option>
+                                            <option value="47">47</option>
+                                            <option value="48">48</option>
+                                            <option value="49">49</option>
+                                            <option value="50">50</option>
+                                            <option value="51">51</option>
+                                            <option value="52">52</option>
+                                            <option value="53">53</option>
+                                            <option value="54">54</option>
+                                            <option value="55">55</option>
+                                            <option value="56">56</option>
+                                            <option value="57">57</option>
+                                            <option value="58">58</option>
+                                            <option value="59">59</option>
+                                            <option value="60">60</option>
+                                            <option value="61">61</option>
+                                            <option value="62">62</option>
+                                            <option value="63">63</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------- 4th Section ------------------->
+        <div class="content-i">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="element-wrapper" id="divmasterTable" style="display: none;">
+                        <h6 class="element-header">Voter Detail :</h6>
+                        <div style="padding-bottom: 10px;">
+                            <span>Total Voters :&nbsp;</span><span id="" name="" value=""
+                                style="color: white; background: #292929; padding: 0px 7px; border-radius: 5px; text-align: center;">
+                                <label id="lblTotal"></label>
+                            </span>
+
+                            <form method="post" action="/MasterSearchExcel" style="">
+                                <input type="hidden" value="" name="BoothID" id="BoothID" />
+                                <!-- <input type="hidden" value="" name="Address" id="Address" />
+                                <input type="hidden" value="" name="PollingStation" id="PollingStation" />
+                                <input type="hidden" value="" name="Surname" id="Surname" />
+                                <input type="hidden" value="" name="FromAge" id="FromAge" />
+                                <input type="hidden" value="" name="ToAge" id="ToAge" />
+                                <input type="hidden" value="" name="FirstNameEnglish" id="FirstNameEnglish" />
+                                <input type="hidden" value="" name="MiddleNameEnglish" id="MiddleNameEnglish" />
+                                <input type="hidden" value="" name="LastNameEnglish" id="LastNameEnglish" />
+                                <input type="hidden" value="" name="MobileNo" id="MobileNo" /> -->
+                                <button id="lnkExcel" runat="server" class="btn btn-outline-success" Style="">
+                                    <i class="fa fa-download"></i> Excel
+                                </button>
+                            </form>
+
+                            <!-- <button id="btnExcel" name="btnExcel" type="submit" class="btn btn-success"
+                                formaction="/MasterSearchExcel" formmethod="post" style="margin-bottom: 10px;">
+                                <i class="fa fa-file-excel" style="color: white;"></i>Excel</button> -->
+
+
+                            <div style="float: right;">
+                                <button type="button" class="btn btn-primary btn-xs m-b-5" style="margin: 5px;"
+                                    onclick="callPrevData()"><i class="fa fa-angle-double-left"></i>&nbsp;
+                                    Prev</button>
+
+                                <button type="button" class="btn btn-primary btn-xs m-b-5" style="margin: 5px;"
+                                    onclick="callData(this)">Next &nbsp;<i
+                                        class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel gridwidth"
+                            style="overflow-y: auto; overflow-x: scroll; -webkit-overflow-scrolling: touch; border: 10px solid #292929; box-shadow: 2px 2px 5px #808080; margin-top: 10px;">
+                            <div>
+                                <table class="table table-bordered m-0 overflowgrid" cellspacing="0" border="1"
+                                    id="tblVoterDetail" style="background-color:White;border-collapse:collapse;">
+                                    <thead>
+                                        <tr style="color:White;background-color:#007AB1;">
+                                            <th class="gridcss" scope="col">Sr.No</th>
+                                            <th class="gridcss" scope="col">Name</th>
+                                            <th class="gridcss" scope="col">Mobile No</th>
+                                            <th class="gridcss" scope="col">Gender
+                                                <hr
+                                                    style="margin-top: 5px; margin-bottom: 5px; border-top-color: #d2d6de;">
+                                                Age
+                                            </th>
+                                            <th class="gridcss" scope="col">Polling Station</th>
+                                            <th class="gridcss" scope="col">Serial Number</th>
+                                            <th class="gridcss" scope="col">Address
+                                                <hr
+                                                    style="margin-top: 5px; margin-bottom: 5px; border-top-color: #d2d6de;">
+                                                Pincode
+                                            </th>
+                                            <!-- <th class="gridcss" scope="col">Voting Status</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <%- include('../partials/footerscript.ejs') %>
+            <script>
+                let currentData = [];
+                let BindData = [];
+                let TotalCountData = [];
+                let searchStatus, filterData;
+
+                $(".select2dropdown").select2();
+                function CancelFunction() {
+                    window.location.href = "/MasterSearch";
+                }
+
+                $('cancleButton').click(function () {
+                    $('input[type="text"]').val('');
+                    $('#tblVoterDetail').DataTable().clear().draw();
+                });
+
+                function divhideShowform(data) {
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+
+                    document.getElementById("divDropdownBooth").style.display = "none";
+                    document.getElementById("divDropdownAddress").style.display = "none";
+                    document.getElementById("divDropdownPollingStation").style.display = "none";
+                    document.getElementById("divDropdownSurname").style.display = "none";
+                    document.getElementById("divDropdownAge").style.display = "none";
+
+                    document.getElementById("divformdetail").style.display = "block";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    $('input[type="text"]').val('');
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    $('#tblVoterDetail').parents('div.element-wrapper').first().hide();
+                    // $('#tblVoterDetail').hide();
+                    $(".select2dropdown").select2();
+                }
+
+                function divhideShowBooth(data) {
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+
+                    document.getElementById("divDropdownBooth").style.display = "block";
+                    document.getElementById("divDropdownAddress").style.display = "none";
+                    document.getElementById("divDropdownPollingStation").style.display = "none";
+                    document.getElementById("divDropdownSurname").style.display = "none";
+                    document.getElementById("divDropdownAge").style.display = "none";
+
+                    document.getElementById("divformdetail").style.display = "none";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    $('input[type="text"]').val('');
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    $('#tblVoterDetail').parents('div.element-wrapper').first().hide();
+                    // $('#tblVoterDetail').hide();
+                    $(".select2dropdown").select2();
+                }
+
+                function divhideShowAddress(data) {
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+                    document.getElementById("divDropdownBooth").style.display = "none";
+                    document.getElementById("divDropdownAddress").style.display = "block";
+                    document.getElementById("divDropdownPollingStation").style.display = "none";
+                    document.getElementById("divDropdownSurname").style.display = "none";
+                    document.getElementById("divDropdownAge").style.display = "none";
+                    document.getElementById("divformdetail").style.display = "none";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    $('input[type="text"]').val('');
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    $('#tblVoterDetail').parents('div.element-wrapper').first().hide();
+                    $(".select2dropdown").select2();
+                }
+
+                function divhideShowPollingStation() {
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+                    document.getElementById("divDropdownBooth").style.display = "none";
+                    document.getElementById("divDropdownAddress").style.display = "none";
+                    document.getElementById("divDropdownPollingStation").style.display = "block";
+                    document.getElementById("divDropdownSurname").style.display = "none";
+                    document.getElementById("divDropdownAge").style.display = "none";
+                    document.getElementById("divformdetail").style.display = "none";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    $('input[type="text"]').val('');
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    $('#tblVoterDetail').parents('div.element-wrapper').first().hide();
+                    $(".select2dropdown").select2();
+                }
+
+                function divhideShowSurname() {
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+                    document.getElementById("divDropdownBooth").style.display = "none";
+                    document.getElementById("divDropdownAddress").style.display = "none";
+                    document.getElementById("divDropdownPollingStation").style.display = "none";
+                    document.getElementById("divDropdownSurname").style.display = "block";
+                    document.getElementById("divDropdownAge").style.display = "none";
+                    document.getElementById("divformdetail").style.display = "none";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    $('input[type="text"]').val('');
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    $('#tblVoterDetail').parents('div.element-wrapper').first().hide();
+                    $(".select2dropdown").select2();
+                }
+
+                function divhideShowAge() {
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+                    document.getElementById("divDropdownBooth").style.display = "none";
+                    document.getElementById("divDropdownAddress").style.display = "none";
+                    document.getElementById("divDropdownPollingStation").style.display = "none";
+                    document.getElementById("divDropdownSurname").style.display = "none";
+                    document.getElementById("divDropdownAge").style.display = "block";
+                    document.getElementById("divformdetail").style.display = "none";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    $('input[type="text"]').val('');
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    $('#tblVoterDetail').parents('div.element-wrapper').first().hide();
+                    $(".select2dropdown").select2();
+                }
+
+                function btnCancle(data) {
+                    debugger;
+                    document.getElementById("divBooth").style.display = "block";
+                    document.getElementById("divAddress").style.display = "block";
+                    document.getElementById("divPollingStation").style.display = "block";
+                    document.getElementById("divSurname").style.display = "block";
+                    document.getElementById("divAge").style.display = "block";
+                    document.getElementById("divDropdownBooth").style.display = "none";
+                    document.getElementById("divDropdownAddress").style.display = "none";
+                    document.getElementById("divDropdownSurname").style.display = "none";
+                    document.getElementById("divDropdownAge").style.display = "none";
+                    document.getElementById("divDropdownPollingStation").style.display = "none";
+                    document.getElementById("divmasterTable").style.display = "none";
+                    document.getElementById("divformdetail").style.display = "block";
+                    document.getElementById("BoothID").options.selectedIndex = 0;
+                    document.getElementById("Address").options.selectedIndex = 0;
+                    document.getElementById("PollingStation").options.selectedIndex = 0;
+                    document.getElementById("Surname").options.selectedIndex = 0;
+                    document.getElementById("FromAge").options.selectedIndex = 0;
+                    document.getElementById("ToAge").options.selectedIndex = 0;
+                    // $('#tblVoterDetail').DataTable().clear().draw();
+                    document.getElementById('FirstNameEnglish').value = "";
+                    document.getElementById('MiddleNameEnglish').value = "";
+                    document.getElementById('LastNameEnglish').value = "";
+                    document.getElementById('MobileNo').value = "";
+                    document.getElementById('Age').value = "";
+                    // document.getElementById('MobileNo').value = "";
+                    $('#tblVoterDetail').DataTable().clear().draw();
+                    // document.getElementById("PollingStation").options.selectedIndex = 0;
+                    // document.getElementById("Surname").options.selectedIndex = 0;
+                    // document.getElementById("Age").options.selectedIndex = 0;
+                    $(".select2dropdown").select2();
+                }
+
+                $(document).ready(function () {
+                    debugger;
+                    $("#tblVoterDetail").DataTable({
+                        "lengthChange": true,
+                        "Search": true,
+                        //lengthMenu: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+                        lengthMenu: [30, 60, 90, 120, 150, 180, 210, 240]
+                        // "bFilter": false,
+                        // "ordering": false
+                    });
+                });
+
+                $('#tblVoterDetail').on('length.dt', function (e, settings, len) {
+                    // Call your API here with the new length
+                    console.log("API call with new length: " + len);
+                    callData("PageChange");
+                });
+
+                function callPrevData() {
+                    debugger;
+                    var currentPage = $('#tblVoterDetail').DataTable().page.info().page;
+                    if (currentPage == 0) {
+                    } else {
+                        // Update the page number to the next page
+                        var nextPage = currentPage - 1;
+                        // Move to the next page
+                        $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                    }
+                }
+
+                function BindBoothData(data) {
+                    debugger;
+                    if ($(data).hasClass('form-control')) {
+                        var filterData = JSON.stringify({
+                            'BoothID': $("#BoothID").val(),
+                            'Address': $("#Address").val(),
+                            'PollingStation': $("#PollingStation").val(),
+                            'Surname': $("#Surname").val(),
+                            'FromAge': $("#FromAge").val(),
+                            'ToAge': $("#ToAge").val(),
+                            'FirstNameEnglish': $("#FirstNameEnglish").val(),
+                            'MiddleNameEnglish': $("#MiddleNameEnglish").val(),
+                            'LastNameEnglish': $("#LastNameEnglish").val(),
+                            'MobileNo': $("#MobileNo").val()
+                            // lastElement: lastElement,
+                            // PageLength: PageLength,
+                        });
+                        $.ajax({
+                            async: false,
+                            type: "POST",
+                            contentType: 'application/json',
+                            url: '/SetMasterSearch',
+                            data: filterData,
+                            success: function (result) {
+                                debugger
+                                if (result.status == 1) {
+                                    if (result.BindMasterData != null) {
+                                        if (result.BindMasterData.data.length > 0) {
+                                            debugger;
+                                            BindData = result.BindMasterData ? result.BindMasterData.data : ''
+                                            TotalCountData = result.BindMasterData ? result.BindMasterData.countdata[0].TotalVoter : ''
+                                            document.getElementById("divmasterTable").style.display = "block";
+                                            $('#tblVoterDetail').DataTable().clear().draw();// clear existing data from the table
+                                            $("#lblTotal")[0].innerHTML = TotalCountData
+                                            jQuery.each(BindData, function (i, itemData) {
+                                                $('#tblVoterDetail').DataTable().row.add([
+                                                    i + 1,
+                                                    itemData.FullNameEnglish,
+                                                    itemData.MobileNo,
+                                                    (itemData.Gender == 'M' ? 'Male' : 'Female') + '<hr>' + (itemData.Age),
+                                                    itemData.PollingStation,
+                                                    itemData.SLNo,
+                                                    (itemData.Address ? itemData.Address : '') + '<hr>' + (itemData.Pincode ? itemData.Pincode : ''),
+                                                    // ((itemData.VotingStatus == 'Pending') ? ('<span style="color: red;">Pending</span>') : ('<span style="color: green;">Voted</span>'))
+                                                ]);
+                                            });
+                                            $('#tblVoterDetail').DataTable().draw();
+                                        }
+                                    }
+                                }
+                                else {
+                                    $("#lblTotal")[0].innerHTML = 0
+                                    $('#tblVoterDetail').DataTable().clear().draw();
+                                    document.getElementById("divmasterTable").style.display = "block";
+                                }
+                            }
+                        })
+                    }
+                }
+
+                // $('#btnSubmit').click(function () {
+                function SearchDetail(data) {
+                    debugger;
+                    if ($(data).hasClass('btn btn-primary')) {
+                        var binddata = JSON.stringify({
+                            'FirstNameEnglish': $("#FirstNameEnglish").val(),
+                            'MiddleNameEnglish': $("#MiddleNameEnglish").val(),
+                            'LastNameEnglish': $("#LastNameEnglish").val(),
+                            'MobileNo': $("#MobileNo").val(),
+                            'FromAge': $("#StartAge").val()
+                        });
+                        $.ajax({
+                            async: false,
+                            type: "POST",
+                            contentType: 'application/json',
+                            url: '/SetMasterSearch',
+                            data: binddata,
+                            success: function (result) {
+                                debugger
+                                if (result.status == 1) {
+                                    if (result.BindMasterData != null) {
+                                        if (result.BindMasterData.data.length > 0) {
+                                            debugger;
+                                            BindData = result.BindMasterData ? result.BindMasterData.data : ''
+                                            TotalCountData = result.BindMasterData ? result.BindMasterData.countdata[0].TotalVoter : ''
+                                            document.getElementById("divmasterTable").style.display = "block";
+                                            // $('#lblTotal') = TotalCountData;
+                                            $('#tblVoterDetail').DataTable().clear().draw();// clear existing data from the table
+                                            $("#lblTotal")[0].innerHTML = TotalCountData
+                                            jQuery.each(BindData, function (i, itemData) {
+                                                $('#tblVoterDetail').DataTable().row.add([
+                                                    i + 1,
+                                                    itemData.FullNameEnglish,
+                                                    itemData.MobileNo,
+                                                    (itemData.Gender == 'M' ? 'Male' : 'Female') + '<hr>' + (itemData.Age),
+                                                    itemData.PollingStation,
+                                                    itemData.SLNo,
+                                                    (itemData.Address ? itemData.Address : '') + '<hr>' + (itemData.Pincode ? itemData.Pincode : ''),
+                                                    // ((itemData.VotingStatus == 'Pending') ? ('<span style="color: red;">Pending</span>') : ('<span style="color: green;">Voted</span>'))
+                                                ]);
+                                            });
+                                            console.log("====totalccccccc=====", TotalCountData)
+                                            $('#tblVoterDetail').DataTable().draw();
+                                        }
+                                    }
+                                }
+                                else {
+                                    $("#lblTotal")[0].innerHTML = 0
+                                    $('#tblVoterDetail').DataTable().clear().draw();
+                                    document.getElementById("divmasterTable").style.display = "block";
+                                }
+                            }
+                        })
+                    }
+                }
+                // });
+
+                function callData(control) {
+                    debugger;
+                    if (BindData.length > 0) {
+                        debugger
+                        var lastElement = BindData[BindData.length - 1].VoterID;
+                        var PageLength = $('#tblVoterDetail').DataTable().page.len();
+                        if (control == "PageChange") {
+                            var currentPage = $('#tblVoterDetail').DataTable().page.info().page;
+                            // Show the spinner icon before making the AJAX request
+                            // $('#loader').show();
+                            $('#tblVoterDetail').addClass('blur');
+                            $('#loader').css("display", "inline-block");
+
+                            if (searchStatus == 'true') {
+                                filterData = JSON.stringify({
+                                    'BoothID': $("#BoothID").val(),
+                                    'Address': $("#Address").val(),
+                                    'PollingStation': $("#PollingStation").val(),
+                                    'Surname': $("#Surname").val(),
+                                    'FromAge': ($("#FromAge").val()) ? ($("#FromAge").val()) : ($("#StartAge").val()),
+                                    'ToAge': $("#ToAge").val(),
+                                    'FirstNameEnglish': $("#FirstNameEnglish").val(),
+                                    'MiddleNameEnglish': $("#MiddleNameEnglish").val(),
+                                    'LastNameEnglish': $("#LastNameEnglish").val(),
+                                    'MobileNo': $("#MobileNo").val(),
+                                    lastElement: lastElement,
+                                    PageLength: PageLength
+                                });
+                            } else {
+                                filterData = JSON.stringify({
+                                    'BoothID': $("#BoothID").val(),
+                                    'Address': $("#Address").val(),
+                                    'PollingStation': $("#PollingStation").val(),
+                                    'Surname': $("#Surname").val(),
+                                    'FromAge': ($("#FromAge").val()) ? ($("#FromAge").val()) : ($("#StartAge").val()),
+                                    'ToAge': $("#ToAge").val(),
+                                    'FirstNameEnglish': $("#FirstNameEnglish").val(),
+                                    'MiddleNameEnglish': $("#MiddleNameEnglish").val(),
+                                    'LastNameEnglish': $("#LastNameEnglish").val(),
+                                    'MobileNo': $("#MobileNo").val(),
+                                    lastElement: lastElement,
+                                    PageLength: PageLength
+                                });
+                            }
+
+                            $.ajax({
+                                async: false,
+                                type: "POST",
+                                contentType: 'application/json',
+                                url: '/SetMasterSearch',
+                                data: filterData,
+                                success: function (result) {
+                                    if (result != null) {
+                                        if (result.BindMasterData != null) {
+                                            if (result.BindMasterData.data.length > 0) {
+                                                var fData = result.BindMasterData.data;
+                                                BindData = BindData.concat(result.BindMasterData.data);
+                                                // console.log('AFTER:', currentPage + 1, currentData.length)
+                                                $('#tblVoterDetail').DataTable().clear().draw(); // clear existing data from the table
+                                                jQuery.each(BindData, function (i, itemData) {
+                                                    $('#tblVoterDetail').DataTable().row.add([
+                                                        i + 1,
+                                                        itemData.FullNameEnglish,
+                                                        itemData.MobileNo,
+                                                        (itemData.Gender == 'M' ? 'Male' : 'Female') + '<hr>' + (itemData.Age),
+                                                        itemData.PollingStation,
+                                                        itemData.SLNo,
+                                                        (itemData.Address ? itemData.Address : '') + '<hr>' + (itemData.Pincode ? itemData.Pincode : ''),
+                                                        // ((itemData.VotingStatus == 'Pending') ? ('<span style="color: red;">Pending</span>') : ('<span style="color: green;">Voted</span>'))
+                                                    ]);
+                                                });
+                                                // Move to the next page
+                                                $('#tblVoterDetail').DataTable().draw();
+                                                // Update the page number to the next page
+                                                var nextPage = currentPage + 1;
+
+                                                // Move to the next page
+                                                $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                                            }
+                                        }
+                                    }
+                                }, complete: function () {
+                                    // Hide the loader
+                                    $('#tblVoterDetail').removeClass('blur');
+                                    $('#loader').hide();
+                                }
+                            });
+                        }
+                        else {
+                            var currentPage = $('#tblVoterDetail').DataTable().page.info().page;
+                            var start = $('#tblVoterDetail').DataTable().page.info().start;
+                            var isAPICall = (start + PageLength) < currentData.length
+
+                            if (!isAPICall) {
+                                debugger;
+                                // Show the spinner icon before making the AJAX request
+                                // $('#loader').show();
+                                $('#tblVoterDetail').addClass('blur');
+                                $('#loader').css("display", "inline-block");
+
+                                if (searchStatus == 'true') {
+                                    filterData = JSON.stringify({
+                                        'BoothID': $("#BoothID").val(),
+                                        'Address': $("#Address").val(),
+                                        'PollingStation': $("#PollingStation").val(),
+                                        'Surname': $("#Surname").val(),
+                                        'FromAge': ($("#FromAge").val()) ? ($("#FromAge").val()) : ($("#StartAge").val()),
+                                        'ToAge': $("#ToAge").val(),
+                                        'FirstNameEnglish': $("#FirstNameEnglish").val(),
+                                        'MiddleNameEnglish': $("#MiddleNameEnglish").val(),
+                                        'LastNameEnglish': $("#LastNameEnglish").val(),
+                                        'MobileNo': $("#MobileNo").val(),
+                                        lastElement: lastElement,
+                                        PageLength: PageLength
+                                    });
+                                } else {
+                                    filterData = JSON.stringify({
+                                        'BoothID': $("#BoothID").val(),
+                                        'Address': $("#Address").val(),
+                                        'PollingStation': $("#PollingStation").val(),
+                                        'Surname': $("#Surname").val(),
+                                        'FromAge': ($("#FromAge").val()) ? ($("#FromAge").val()) : ($("#StartAge").val()),
+                                        'ToAge': $("#ToAge").val(),
+                                        'FirstNameEnglish': $("#FirstNameEnglish").val(),
+                                        'MiddleNameEnglish': $("#MiddleNameEnglish").val(),
+                                        'LastNameEnglish': $("#LastNameEnglish").val(),
+                                        'MobileNo': $("#MobileNo").val(),
+                                        lastElement: lastElement,
+                                        PageLength: PageLength
+                                    });
+                                }
+                                $.ajax({
+                                    async: false,
+                                    type: "POST",
+                                    contentType: 'application/json',
+                                    url: '/SetMasterSearch',
+                                    data: filterData,
+                                    success: function (result) {
+                                        debugger;
+                                        if (result != null) {
+                                            if (result.BindMasterData != null) {
+                                                if (result.BindMasterData.data.length > 0) {
+                                                    var fData = result.BindMasterData.data;
+                                                    BindData = BindData.concat(result.BindMasterData.data);
+                                                    // console.log('AFTER:', currentPage + 1, currentData.length)
+                                                    $('#tblVoterDetail').DataTable().clear().draw(); // clear existing data from the table
+                                                    jQuery.each(BindData, function (i, itemData) {
+                                                        $('#tblVoterDetail').DataTable().row.add([
+                                                            i + 1,
+                                                            itemData.FullNameEnglish,
+                                                            itemData.MobileNo,
+                                                            (itemData.Gender == 'M' ? 'Male' : 'Female') + '<hr>' + (itemData.Age),
+                                                            itemData.PollingStation,
+                                                            itemData.SLNo,
+                                                            (itemData.Address ? itemData.Address : '') + '<hr>' + (itemData.Pincode ? itemData.Pincode : ''),
+                                                            // ((itemData.VotingStatus == 'Pending') ? ('<span style="color: red;">Pending</span>') : ('<span style="color: green;">Voted</span>'))
+                                                        ]);
+                                                    });
+                                                    $('#tblVoterDetail').DataTable().draw();
+                                                    // $(rowNode)
+                                                    //     .css('color', 'red')
+                                                    //     .animate({ color: 'black' });
+                                                    // Update the page number to the next page
+                                                    var nextPage = currentPage + 1;
+
+                                                    // Move to the next page
+                                                    $('#tblVoterDetail').DataTable().draw();
+                                                    // Update the page number to the next page
+                                                    var nextPage = currentPage + 1;
+
+                                                    // Move to the next page
+                                                    $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                                                }
+                                            }
+                                        }
+                                    }, complete: function () {
+                                        // Hide the loader
+                                        $('#tblVoterDetail').removeClass('blur');
+                                        $('#loader').hide();
+                                    }
+                                });
+                                // Hide the spinner icon after the data has been loaded
+                                // $('#tblVoterDetail').removeClass('blur');
+                                // $('#loader').hide();
+
+                            } else {
+                                // Update the page number to the next page
+                                var nextPage = currentPage + 1;
+                                // Move to the next page
+                                $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                            }
+                        }
+                    }
+                }
+
+            </script>

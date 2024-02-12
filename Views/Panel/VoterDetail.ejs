@@ -1,0 +1,351 @@
+<%- include('../partials/head.ejs') %>
+    <style>
+        /* th.gridcss.sorting {
+            width: fit-content !important;
+        } */
+
+        /* th.gridcss.sorting {
+            width: fit-content !important;
+        } */
+
+        td.sorting_1 {
+            text-align: center;
+        }
+
+        /* th.gridcss.sorting.sorting_asc {
+            width: 0% !important;
+        } */
+
+        th.gridcss.sorting {
+            width: fit-content !important;
+        }
+
+        @media (max-width: 1650px) {
+            body.with-content-panel .content-box {
+                padding-left: 1rem !important;
+            }
+        }
+
+        .gridcss {
+            font-size: 13px !important;
+        }
+
+        th {
+            text-align: center !important;
+            vertical-align: middle !important;
+            font-weight: 500 !important;
+        }
+
+        /* td {
+            text-align: center !important;
+            vertical-align: middle !important;
+        } */
+    </style>
+    <%- include('../partials/header.ejs') %>
+        <div style="min-height: 700px; height: auto; position: relative;">
+            <div class="content-i">
+                <div class="content-box">
+                    <div style="padding-bottom: 10px;">
+                        <span>Total Voters :&nbsp;</span><span id="ctl00_ContentPlaceHolder1_lblTotal"
+                            style="color: white; background: #292929; padding: 0px 7px; border-radius: 5px; text-align: center;"><%-
+                                VoteDetailData.countdata[0].TotalVoter %>
+                        </span>
+
+                        <div style="float: right;">
+                            <form method="post" action="/VoterDetailExcel" style="">
+                                <input type="hidden" value="" id="BoothID" name="BoothID" />
+                                <button id="lnkExcel" runat="server" class="btn btn-outline-success" Style="">
+                                    <i class="fa fa-download"></i> Excel
+                                </button>
+                            </form>
+                        </div>
+
+
+                        <div style="float: right;">
+                            <button type="button" class="btn btn-primary btn-xs m-b-5" style="margin: 5px;"
+                                onclick="callPrevData()"><i class="fa fa-angle-double-left"></i>&nbsp;
+                                Prev</button>
+                            <button type="button" class="btn btn-primary btn-xs m-b-5" style="margin: 5px;"
+                                onclick="callData(this)">Next &nbsp;<i class="fa fa-angle-double-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="panel gridwidth"
+                        style="overflow-y: auto; overflow-x: scroll; -webkit-overflow-scrolling: touch; border: 10px solid #292929; box-shadow: 2px 2px 5px #808080; margin-top: 10px;">
+                        <div>
+                            <input type="hidden" value="" id="BoothID" name="BoothID" />
+                            <table class="table table-bordered m-0 overflowgrid" cellspacing="0" border="1"
+                                id="tblVoterDetail" style="background-color:White;border-collapse:collapse;">
+                                <thead>
+                                    <tr style="color:White;background-color:#007AB1;">
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Sr.No
+                                        </th>
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Name</th>
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Mobile No
+                                        </th>
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Gender
+                                            <hr style="margin-top: 5px; margin-bottom: 5px; border-top-color: #d2d6de;">
+                                            Age
+                                        </th>
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Polling
+                                            Station</th>
+
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Serial
+                                            Number</th>
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Address
+                                            <hr style="margin-top: 5px; margin-bottom: 5px; border-top-color: #d2d6de;">
+                                            Pincode
+                                        </th>
+                                        <th class="gridcss" scope="col" style="width: fit-content !important;">Voting
+                                            Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if(VoteDetailData.data !=null) {%>
+                                        <% for(var i=0; i < VoteDetailData.data.length; i++) {%>
+                                            <tr>
+                                                <td align="center" style="width:1%;">
+                                                    <%= i+1 %>
+                                                </td>
+                                                <td style="width:5%;">
+                                                    <span id=""><%- VoteDetailData.data[i].FullNameEnglish %></span>
+                                                </td>
+                                                <td style="width:5%;">
+                                                    <span id=""><%- VoteDetailData.data[i].MobileNo %></span>
+                                                </td>
+                                                <td style="width:5%;">
+                                                    <% if(VoteDetailData.data[i].Gender==='M' ){ %>
+                                                        <span>
+                                                            Male
+                                                        </span>
+                                                        <% }else{ %>
+                                                            <span>
+                                                                Female
+                                                            </span>
+                                                            <% } %>
+
+                                                                <hr
+                                                                    style="margin-top: 5px; margin-bottom: 5px; border-top-color: #d2d6de;">
+                                                                <span><%- VoteDetailData.data[i].Age %></span>
+                                                </td>
+                                                <td style="width:10%;">
+                                                    <span id=""><%- VoteDetailData.data[i].PollingStation %></span>
+                                                </td>
+                                                <td style="width:2%;">
+                                                    <span id=""><%- VoteDetailData.data[i].SLNo %></span>
+                                                </td>
+                                                <td style="width:10%;">
+                                                    <span>
+                                                        <%- VoteDetailData.data[i].Address %>
+                                                    </span>
+                                                    <hr
+                                                        style="margin-top: 5px; margin-bottom: 5px; border-top-color: #d2d6de;">
+                                                    <span><%- VoteDetailData.data[i].Pincode %></span>
+                                                </td>
+                                                <td align="center" style="width:5%;">
+                                                    <% if(VoteDetailData.data[i].VotingStatus==='Pending' ){ %>
+                                                        <span style="color: red;">
+                                                            <%- VoteDetailData.data[i].VotingStatus %>
+                                                        </span>
+                                                        <% }else{ %>
+                                                            <span style="color: green;">
+                                                                <%- VoteDetailData.data[i].VotingStatus %>
+                                                            </span>
+                                                            <% } %>
+                                                </td>
+                                            </tr>
+                                            <%} %>
+                                                <%} %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../partials/footerscript.ejs') %>
+            <script>
+                let currentData = [];
+                let searchStatus, data;
+
+                var BindBoothID = JSON.parse(`<%- JSON.stringify(BoothID).replace(/[\n\r\t]/g, '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/'/g, "\\'") %>`)
+                $("#BoothID").val(BindBoothID);
+                $(document).ready(function () {
+                    currentData = JSON.parse(`<%- JSON.stringify(VoteDetailData.data).replace(/[\n\r\t]/g, '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/'/g, "\\'") %>`)
+                    $("#tblVoterDetail").DataTable({
+                        "lengthChange": true,
+                        "Search": true,
+                        lengthMenu: [30, 60, 90, 120, 150, 180, 210, 240]
+                        // "bFilter": false,
+                        // "ordering": false
+                    });
+                });
+
+                $('#tblVoterDetail').on('length.dt', function (e, settings, len) {
+                    // Call your API here with the new length
+                    console.log("API call with new length: " + len);
+                    callData("PageChange");
+                });
+
+                function callPrevData() {
+                    debugger;
+                    var currentPage = $('#tblVoterDetail').DataTable().page.info().page;
+                    if (currentPage == 0) {
+                    } else {
+                        // Update the page number to the next page
+                        var nextPage = currentPage - 1;
+                        // Move to the next page
+                        $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                    }
+                }
+
+                function callData(control) {
+                    debugger;
+                    if (currentData.length > 0) {
+                        debugger;
+                        var lastElement = currentData[currentData.length - 1].VoterID;
+                        var PageLength = $('#tblVoterDetail').DataTable().page.len();
+                        if (control == "PageChange") {
+                            var currentPage = $('#tblVoterDetail').DataTable().page.info().page;
+                            // Show the spinner icon before making the AJAX request
+                            // $('#loader').show();
+                            $('#tblVoterDetail').addClass('blur');
+                            $('#loader').css("display", "inline-block");
+
+                            if (searchStatus == 'true') {
+                                data = JSON.stringify({
+                                    lastElement: lastElement,
+                                    PageLength: PageLength,
+                                    BoothID: $("#BoothID").val()
+                                });
+                            } else {
+                                data = JSON.stringify({
+                                    lastElement: lastElement,
+                                    PageLength: PageLength,
+                                    BoothID: $("#BoothID").val()
+                                });
+                            }
+
+                            $.ajax({
+                                async: false,
+                                type: "POST",
+                                contentType: 'application/json',
+                                url: '/SetVoterDetail',
+                                data: data,
+                                success: function (data) {
+                                    if (data != null) {
+                                        if (data.data.length > 0) {
+                                            var fData = data.data;
+                                            currentData = currentData.concat(data.data);
+                                            // console.log('AFTER:', currentPage + 1, currentData.length)
+                                            $('#tblVoterDetail').DataTable().clear().draw(); // clear existing data from the table
+                                            jQuery.each(currentData, function (i, itemData) {
+                                                $('#tblVoterDetail').DataTable().row.add([
+                                                    '<td align="center" style="width:1%;">' + (i + 1) + '</td>',
+                                                    itemData.FullNameEnglish,
+                                                    itemData.MobileNo,
+                                                    (itemData.Gender === 'M' ? 'Male' : 'Female') + '<hr>' + (itemData.Age),
+                                                    itemData.PollingStation,
+                                                    itemData.SLNo,
+                                                    (itemData.Address ? itemData.Address : '') + '<hr>' + (itemData.Pincode ? itemData.Pincode : ''),
+                                                    '<td align="center" style="width:1%;">' + ((itemData.VotingStatus === 'Pending') ? ('<span style="color: red;align:center;">Pending</span>') : ('<span style="color: green;">Voted</span>')) + '</td>'
+                                                ]);
+                                            });
+                                            $('#tblVoterDetail').DataTable().draw();
+                                            var nextPage = currentPage + 1;
+
+                                            // Move to the next page
+                                            $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                                        }
+                                    }
+                                }, complete: function () {
+                                    // Hide the loader
+                                    $('#tblVoterDetail').removeClass('blur');
+                                    $('#loader').hide();
+                                }
+                            });
+                        } else {
+                            var currentPage = $('#tblVoterDetail').DataTable().page.info().page;
+                            var start = $('#tblVoterDetail').DataTable().page.info().start;
+                            var isAPICall = (start + PageLength) < currentData.length
+
+                            if (!isAPICall) {
+                                debugger;
+                                // Show the spinner icon before making the AJAX request
+                                // $('#loader').show();
+                                $('#tblVoterDetail').addClass('blur');
+                                $('#loader').css("display", "inline-block");
+
+                                if (searchStatus == 'true') {
+                                    data = JSON.stringify({
+                                        lastElement: lastElement,
+                                        PageLength: PageLength,
+                                        BoothID: $("#BoothID").val()
+                                    });
+                                } else {
+                                    data = JSON.stringify({
+                                        lastElement: lastElement,
+                                        PageLength: PageLength,
+                                        BoothID: $("#BoothID").val()
+                                    });
+                                }
+                                $.ajax({
+                                    async: false,
+                                    type: "POST",
+                                    contentType: 'application/json',
+                                    url: '/SetVoterDetail',
+                                    data: data,
+                                    success: function (data) {
+                                        if (data != null) {
+                                            if (data.data.length > 0) {
+                                                var fData = data.data;
+                                                debugger;
+                                                currentData = currentData.concat(data.data);
+                                                // console.log('AFTER:', currentPage + 1, currentData.length)
+                                                $('#tblVoterDetail').DataTable().clear().draw(); // clear existing data from the table
+                                                jQuery.each(currentData, function (i, itemData) {
+                                                    $('#tblVoterDetail').DataTable().row.add([
+                                                        '<td align="center" style="width:1%;">' + (i + 1) + '</td>',
+                                                        itemData.FullNameEnglish,
+                                                        itemData.MobileNo,
+                                                        (itemData.Gender === 'M' ? 'Male' : 'Female') + '<hr>' + (itemData.Age),
+                                                        itemData.PollingStation,
+                                                        itemData.SLNo,
+                                                        (itemData.Address ? itemData.Address : '') + '<hr>' + (itemData.Pincode ? itemData.Pincode : ''),
+                                                        '<td align="center" style="width:1%;">' + ((itemData.VotingStatus === 'Pending') ? ('<span style="color: red;align:center;">Pending</span>') : ('<span style="color: green;">Voted</span>')) + '</td>'
+                                                    ]);
+                                                });
+                                                $('#tblVoterDetail').DataTable().draw();
+                                                // $(rowNode)
+                                                //     .css('color', 'red')
+                                                //     .animate({ color: 'black' });
+                                                // Update the page number to the next page
+                                                var nextPage = currentPage + 1;
+                                                // Move to the next page
+                                                $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                                                $('#tblVoterDetail td:first-child').addClass('tdcss');
+                                                $('#tblVoterDetail tr td:nth-child(4)').addClass('tdcss');
+                                            }
+                                        }
+                                    }, complete: function () {
+                                        // Hide the loader
+                                        $('#tblVehicleLogDetail').removeClass('blur');
+                                        $('#loader').hide();
+                                    }
+                                });
+
+                                // Hide the spinner icon after the data has been loaded
+                                // $('#tblVoterDetail').removeClass('blur');
+                                // $('#loader').hide();
+
+                            } else {
+                                // Update the page number to the next page
+                                var nextPage = currentPage + 1;
+                                // Move to the next page
+                                $('#tblVoterDetail').DataTable().page(nextPage).draw(false);
+                            }
+
+
+                        }
+                    }
+                }
+            </script>

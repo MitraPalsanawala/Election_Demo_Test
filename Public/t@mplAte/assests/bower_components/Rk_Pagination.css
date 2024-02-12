@@ -1,0 +1,37 @@
+﻿
+textarea {
+    resize: none;
+}
+
+.GridPager a, .GridPager span {
+    display: block;
+    height: 22px;
+    width: 35px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.GridPager td {
+    /*padding: 0px 5px;*/
+    border: 0;
+    padding: .2rem;
+}
+
+.GridPager a {
+    background-color: #FFF;
+    color: #666666;
+    border: 1px solid #AEAEAE;
+    font-family: Calibri;
+}
+
+.GridPager span {
+    font-family: Calibri;
+    /*background-color: #ef582b;*/
+    background-color: #007AB1;
+    color: #000;
+    border: 1px solid #D7D7D7;
+    box-shadow: 3px 3px 5px 0px rgba(60, 65, 66, 1);
+    text-shadow: 1px 1px #000;
+    color: #FFF;
+}

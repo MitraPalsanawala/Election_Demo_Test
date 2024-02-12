@@ -1,0 +1,128 @@
+<%- include('../partials/head.ejs') %>
+
+    <%- include('../partials/header.ejs') %>
+        <div style="min-height: 700px; height: auto; position: relative;">
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="row">
+                        <div class="col-sm-6 col-12 offset-sm-3">
+                            <div class="row" style="display: block; width: 100%">
+                                <a class="element-box el-tablo centered trend-in-corner padded bold-label"
+                                    href="javascript:void(0)"
+                                    style="background: linear-gradient(45deg, #98c9fd, #007AB1); color: white; -webkit-text-fill-color: white;">
+                                    <div class="value">
+                                        <span id="ctl00_ContentPlaceHolder1_rptMainCategory_ctl00_lblTotalUserCount"><%-
+                                                TotalVoteData[0].TotalVoter %></span>
+                                    </div>
+                                    <div class="label"
+                                        style="font-size: 20px; font-weight: 500; text-shadow: 1px 1px 1px black">
+                                        169 - CHITTORGARH</div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="value">
+                                                <span
+                                                    id="ctl00_ContentPlaceHolder1_rptMainCategory_ctl00_lblTotalVotedCount"><%-
+                                                        TotalVoteData[0].VotingDone %></span>
+                                            </div>
+                                            <div class="label" style="text-shadow: 1px 1px 1px black">
+                                                Voted
+                                            </div>
+                                        </div>
+                                        <% var Pending_Vote=0 %>
+                                            <% Pending_Vote=Number(TotalVoteData[0].TotalVoter) -
+                                                Number(TotalVoteData[0].VotingDone) %>
+                                                <div class="col-md-6">
+                                                    <div class="value">
+                                                        <span
+                                                            id="ctl00_ContentPlaceHolder1_rptMainCategory_ctl00_lblTotalPendingCount">
+                                                            <%- Pending_Vote %>
+                                                        </span>
+                                                    </div>
+                                                    <div class="label" style="text-shadow: 1px 1px 1px black">
+                                                        Pending</div>
+                                                </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 2%">
+                        <% for(var i=0; i < BoothTotalVoteData.length; i++) {%>
+                            <div class="col-sm-2 col-12">
+                                <div class="row" style="display: block; width: 100%">
+                                    <a class="element-box el-tablo centered trend-in-corner padded bold-label" href="VoterDetail/<%- BoothTotalVoteData[i].BoothID
+                                                    %>"
+                                        style="background: linear-gradient(45deg, #98c9fd, #007AB1); color: white; -webkit-text-fill-color: white;">
+                                        <div class="value">
+                                            <span id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblTotalCount"
+                                                style="font-size: 25px"><%- BoothTotalVoteData[i].TotalVoter %></span>
+                                        </div>
+                                        <div class="label">
+                                            <span id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblCategory"
+                                                style="font-size: 20px; font-weight: 500; text-shadow: 1px 1px 1px black"><%-
+                                                    BoothTotalVoteData[i].BoothName %></span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="value">
+                                                    <span
+                                                        id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblVoteUserCount"
+                                                        style="font-size: 25px"><%- BoothTotalVoteData[i].DoneVoter
+                                                            %></span>
+                                                </div>
+                                                <div class="label" style="text-shadow: 1px 1px 1px black">
+                                                    Voted
+                                                </div>
+                                                <!-- <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="value">
+                                                                        <span
+                                                                            id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblTotalMaleVotedCount"
+                                                                            style="font-size: 13px">56</span>
+                                                                    </div>
+                                                                    <div class="label"
+                                                                        style="text-shadow: 1px 1px 1px black">M</div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="value">
+                                                                        <span
+                                                                            id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblTotalFemaleVotedCount"
+                                                                            style="font-size: 13px">62</span>
+                                                                    </div>
+                                                                    <div class="label"
+                                                                        style="text-shadow: 1px 1px 1px black">F</div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="value">
+                                                                        <span
+                                                                            id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblTotalTransgenderVotedCount"
+                                                                            style="font-size: 13px">0</span>
+                                                                    </div>
+                                                                    <div class="label"
+                                                                        style="text-shadow: 1px 1px 1px black">T</div>
+                                                                </div>
+                                                            </div> -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="value">
+                                                    <% var Pending_Booth=0 %>
+                                                        <% Pending_Booth=Number(BoothTotalVoteData[i].TotalVoter) -
+                                                            Number(BoothTotalVoteData[i].DoneVoter) %>
+                                                            <span
+                                                                id="ctl00_ContentPlaceHolder1_rptCategory_ctl00_lblPendingVoteCount"
+                                                                style="font-size: 25px"><%- Pending_Booth %></span>
+                                                </div>
+                                                <div class="label" style="text-shadow: 1px 1px 1px black">
+                                                    Pending</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../partials/footerscript.ejs') %>
